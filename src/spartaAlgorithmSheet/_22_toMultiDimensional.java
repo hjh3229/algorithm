@@ -1,7 +1,5 @@
 package spartaAlgorithmSheet;
 
-import java.util.Arrays;
-
 public class _22_toMultiDimensional {
     public static void main(String[] args) {
 
