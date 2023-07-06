@@ -76,25 +76,11 @@ public class MakeStars {
     }
 
     public int[] getSize(List<int[]> dots) { // 전체 가로 세로 크기를 구하는 메서드
-        int minX = Integer.MAX_VALUE; // 가장 작은 x 좌표 (어떤 값이랑 비교하더라도 초기화 될 수 있도록 Integer.MAX_VALUE로 초기화)
-        int maxX = Integer.MIN_VALUE; // 가장 큰 x 좌표 (어떤 값이랑 비교하더라도 초기화 될 수 있도록 Integer.MIN_VALUE로 초기화)
-        int minY = Integer.MAX_VALUE; // 가장 작은 y 좌표
-        int maxY = Integer.MIN_VALUE; // 가장 큰 y 좌표
+        int minX = 1001; // 가장 작은 x 좌표
+        int maxX = -1001; // 가장 큰 x 좌표
+        int minY = 1001; // 가장 작은 y 좌표
+        int maxY = -1001; // 가장 큰 y 좌표
 
-        for (int[] dot : dots) { // 최대, 최소 좌표값 초기화
-            if (dot[0] < minX) {
-                minX = dot[0];
-            }
-            if (dot[0] > maxX) {
-                maxX = dot[0];
-            }
-            if (dot[1] < minY) {
-                minY = dot[1];
-            }
-            if (dot[1] > maxY) {
-                maxY = dot[1];
-            }
-        }
 
         int width = maxX - minX + 1; // 가로의 길이
         int height = maxY - minY + 1; // 세로의 길이
