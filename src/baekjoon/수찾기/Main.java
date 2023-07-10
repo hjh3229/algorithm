@@ -2,6 +2,7 @@ package baekjoon.수찾기;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.HashSet;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -12,35 +13,19 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
         int N = Integer.parseInt(br.readLine());
-        int[] A = new int[N];
+        HashSet<String> A = new HashSet<>();
+        String[] a = br.readLine().split(" ");
         for (int i = 0; i < N; i++) {
-            A[i] = Integer.parseInt(br.readLine());
+            A.add(a[i]);
         }
         int M = Integer.parseInt(br.readLine());
-        int[] B = new int[M];
+        String[] b = br.readLine().split(" ");
         for (int i = 0; i < M; i++) {
-            B[i] = Integer.parseInt(br.readLine());
-        }
-        int[] answer = new int[M];
-        for (int i = 0; i < M; i++) {
-            boolean match = false;
-            int b = B[i];
-            for (int j = 0; j < N; j++) {
-                int a = A[j];
-                if (a == b) {
-                    match = true;
-                    break;
-                }
-            }
-            if (match) {
-                answer[i] = 1;
+            if (A.contains(b[i])) {
+                sb.append("1").append("\n");
             } else {
-                answer[i] = 0;
+                sb.append("0").append("\n");
             }
-        }
-
-        for (int i = 0; i < M; i++) {
-            sb.append(answer[i]).append('\n');
         }
 
         System.out.println(sb);
