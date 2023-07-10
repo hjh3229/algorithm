@@ -1,4 +1,4 @@
-package baekjoon.수찾기;
+package baekjoon.search.bj_1920;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

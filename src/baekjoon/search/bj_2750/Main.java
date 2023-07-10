@@ -1,4 +1,4 @@
-package baekjoon.수정렬하기;
+package baekjoon.search.bj_2750;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
