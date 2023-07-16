@@ -1,32 +1,40 @@
-package baekjoon.search.bj_10845;
+package baekjoon.search.bj_10866;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Deque;
 import java.util.LinkedList;
-import java.util.Queue;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception{
         new Main().solution();
     }
 
-    public void solution() throws Exception {
+    public void solution() throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        Queue<Integer> answer = new LinkedList<>();
+        Deque<Integer> answer = new LinkedList<>();
 
         int time = Integer.parseInt(br.readLine());
-        int last = -1; // 마지막 수 조회 용
+
         for (int i = 0; i < time; i++) {
             String[] order = br.readLine().split(" ");
             switch (order[0]) {
-                case "push" : answer.offer(Integer.parseInt(order[1]));
-                last =Integer.parseInt(order[1]);
+                case "push_front" : answer.addFirst(Integer.parseInt(order[1]));
                 break;
-                case "pop" : if (answer.isEmpty()) {
+                case "push_back" : answer.addLast(Integer.parseInt(order[1]));
+                break;
+                case "pop_front" : if (answer.isEmpty()) {
                     System.out.println(-1);
                 } else {
-                    System.out.println(answer.peek());
-                    answer.poll();
+                    System.out.println(answer.peekFirst());
+                    answer.removeFirst();
+                }
+                break;
+                case "pop_back" : if (answer.isEmpty()) {
+                    System.out.println(-1);
+                } else {
+                    System.out.println(answer.peekLast());
+                    answer.removeLast();
                 }
                 break;
                 case "size" : System.out.println(answer.size());
@@ -40,13 +48,13 @@ public class Main {
                 case "front" : if (answer.isEmpty()) {
                     System.out.println(-1);
                 } else {
-                    System.out.println(answer.peek());
+                    System.out.println(answer.peekFirst());
                 }
                 break;
-                case "back" : if (answer.isEmpty()) { // Deque를 사용하면 peekLast() 메서드로 쉽게 확인할 수 있으나 이 기능은 직접 구현해봤다.
+                case "back" : if (answer.isEmpty()) {
                     System.out.println(-1);
                 } else {
-                    System.out.println(last);
+                    System.out.println(answer.peekLast());
                 }
             }
         }
