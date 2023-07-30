@@ -12,15 +12,16 @@ public class Main {
   static boolean[] b;
   public static void main(String[] args) throws Exception {
     while (true) {
-      k = Integer.parseInt(br.readLine());
+      String[] s = br.readLine().split(" ");
+      k = Integer.parseInt(s[0]);
       if (k == 0) {
         return;
       }
       S = new int[k];
       b = new boolean[k];
-      String[] s = br.readLine().split(" ");
-      for (int i = 0; i < k; i++) {
-        S[i] = Integer.parseInt(s[i]);
+
+      for (int i = 1; i <= k; i++) {
+        S[i-1] = Integer.parseInt(s[i]);
       }
       solution(0, 0);
       System.out.println(sb);
