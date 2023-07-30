@@ -29,18 +29,21 @@ public class Main {
     }
   }
 
-  public static void solution(int index, int start) throws Exception {
-    if (index == 6) {
+  public static void solution(int index, int start) throws Exception { // 백트래킹이 시작하는 시점은 6번째 자리 이전에 마지막 숫자를 넣었을 때
+    if (index == 6) { // index는 숫자를 넣은 위치이므로 6번째 자리에 숫자를 넣으면 출력
       for (int i = 0; i < 6; i++) {
         sb.append(a[i]).append(" ");
       }
       sb.append("\n");
       return;
     }
-    for (int i = start; i < k; i++) {
+    for (int i = start; i < k; i++) { // start는 b[] 내에서 비교를 시작할 위치
       if (b[i]) continue;
       b[i] = true;
       a[index] = S[i];
+      sb.append(index+1);
+      sb.append(i+1);
+      sb.append("\n");
       solution(index+1, i+1);
       b[i] = false;
     }
