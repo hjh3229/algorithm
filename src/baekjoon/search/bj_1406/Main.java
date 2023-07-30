@@ -13,40 +13,35 @@ public class Main {
 
     public void solution() throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
 
         String[] first = br.readLine().split("");
         List<String> answer = new ArrayList<>(Arrays.asList(first)); // 배열을 리스트화하는 방법
-        int index = answer.size() - 1;
+        int index = answer.size();
         int time = Integer.parseInt(br.readLine());
         for (int i = 0; i < time; i++) {
             String[] order = br.readLine().split(" ");
-            switch (order[0]) {
-                case "L" : if (index == 0) {
-                    continue;
-                } else {
+            if (order[0].equals("L")) {
+                if (index != 0) {
                     index--;
                 }
-                break;
-                case "D" : if (index == answer.size()) {
-                    continue;
-                } else {
+            } else if (order[0].equals("D")) {
+                if (index != answer.size()) {
                     index++;
                 }
-                break;
-                case "B" : if (index == 0) {
-                    continue;
-                } else {
-                    answer.remove(index);
+            } else if (order[0].equals("B")) {
+                if (index != 0) {
+                    answer.remove(index-1);
                     index--;
                 }
-                break;
-                case "P" : answer.add(index, order[1]);
+            } else if (order[0].equals("P")) {
+                answer.add(index, order[1]);
                 index++;
-                break;
             }
         }
         for (int i = 0; i < answer.size(); i++) {
-            System.out.print(answer.get(i));
+            sb.append(answer.get(i));
         }
+        System.out.println(sb);
     }
 }
