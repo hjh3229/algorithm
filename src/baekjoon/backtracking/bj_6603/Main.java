@@ -41,7 +41,7 @@ public class Main {
       if (b[i]) continue;
       b[i] = true;
       a[index] = S[i];
-      sb.append(index+1);
+      sb.append(index+1 + " ");
       sb.append(i+1);
       sb.append("\n");
       solution(index+1, i+1);
