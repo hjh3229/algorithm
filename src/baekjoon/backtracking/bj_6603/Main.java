@@ -22,12 +22,13 @@ public class Main {
       for (int i = 0; i < k; i++) {
         S[i] = Integer.parseInt(s[i]);
       }
-      solution(0);
+      solution(0, 0);
       System.out.println(sb);
+      sb.setLength(0);
     }
   }
 
-  public static void solution(int index) throws Exception {
+  public static void solution(int index, int start) throws Exception {
     if (index == 6) {
       for (int i = 0; i < 6; i++) {
         sb.append(a[i]).append(" ");
@@ -35,11 +36,12 @@ public class Main {
       sb.append("\n");
       return;
     }
-    for (int i = 0; i < k; i++) {
+    for (int i = start; i < k; i++) {
       if (b[i]) continue;
       b[i] = true;
       a[index] = S[i];
-      solution(index+1);
+      solution(index+1, i+1);
+      b[i] = false;
     }
   }
 }
